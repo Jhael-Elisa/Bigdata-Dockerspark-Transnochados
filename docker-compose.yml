@@ -1,0 +1,115 @@
+version: '3.8'
+
+networks:
+  spark-network:
+    driver: bridge
+
+services:
+  yarn-resourcemanager:
+    build: .
+    hostname: yarn-resourcemanager
+    networks:
+      - spark-network
+    ports:
+      - "8088:8088"  # YARN ResourceManager Web UI
+      - "8032:8032"  # ResourceManager
+      - "8030:8030"  # Scheduler
+      - "8031:8031"  # Resource Tracker
+      - "9000:9000"  # HDFS
+    volumes:
+      - ./config/hadoop:/opt/hadoop/etc/hadoop
+      - ./logs/yarn:/opt/hadoop/logs
+      - ./scripts:/scripts
+    environment:
+      - HADOOP_HOME=/opt/hadoop
+      - YARN_RESOURCEMANAGER_USER=root
+      - SPARK_HOME=/opt/spark
+    command: bash -c "/scripts/init-hdfs.sh && /opt/hadoop/bin/yarn resourcemanager"
+
+  yarn-nodemanager:
+    build: .
+    hostname: yarn-nodemanager
+    networks:
+      - spark-network
+    ports:
+      - "8042:8042"  # NodeManager Web UI
+    volumes:
+      - ./config/hadoop:/opt/hadoop/etc/hadoop
+      - ./logs/yarn:/opt/hadoop/logs
+    environment:
+      - HADOOP_HOME=/opt/hadoop
+      - YARN_NODEMANAGER_USER=root
+    command: /opt/hadoop/bin/yarn nodemanager
+    depends_on:
+      - yarn-resourcemanager
+
+  spark-master:
+    build: .
+    container_name: spark-master
+    networks:
+      - spark-network
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
+    volumes:
+      - ./data:/opt/spark/data
+      - ./logs/spark:/opt/spark/logs
+      - ./config/hadoop:/opt/hadoop/etc/hadoop
+    command: ["spark-class", "org.apache.spark.deploy.master.Master"]
+
+  spark-worker:
+    build: .
+    container_name: spark-worker
+    networks:
+      - spark-network
+    ports:
+      - "8081:8081"
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - ./data:/opt/spark/data
+      - ./logs/spark:/opt/spark/logs
+    depends_on:
+      - spark-master
+    command: ["spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077"]
+
+  hive-metastore:
+    build: .
+    container_name: hive-metastore
+    ports:
+      - "9083:9083"
+    environment:
+      - SERVICE_PRECONDITION=spark-master:7077
+    volumes:
+      - ./data:/opt/hive/data
+      - ./logs/hive:/opt/hive/logs
+    command: ["hive", "--service", "metastore"]
+
+  hive-server:
+    build: .
+    container_name: hive-server
+    ports:
+      - "10000:10000"
+      - "10002:10002"
+    environment:
+      - SERVICE_PRECONDITION=hive-metastore:9083
+    volumes:
+      - ./data:/opt/hive/data
+      - ./logs/hive:/opt/hive/logs
+    depends_on:
+      - hive-metastore
+    command: ["hive", "--service", "hiveserver2"]
