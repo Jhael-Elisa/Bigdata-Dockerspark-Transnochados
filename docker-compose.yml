@@ -11,7 +11,7 @@ services:
     networks:
       - spark-network
     ports:
-      - "8088:8088"  # YARN ResourceManager Web UI
+      - "8082:8080"  # YARN ResourceManager Web UI
       - "8032:8032"  # ResourceManager
       - "8030:8030"  # Scheduler
       - "8031:8031"  # Resource Tracker
@@ -48,9 +48,9 @@ services:
     container_name: spark-master
     networks:
       - spark-network
-    ports:
-      - "8080:8080"
-      - "7077:7077"
+    # ports:
+    #   - "8099:8080"
+    #   - "7077:7077"
     environment:
       - SPARK_MODE=master
       - SPARK_RPC_AUTHENTICATION_ENABLED=no

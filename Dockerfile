@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-slim
+FROM eclipse-temurin:11-jdk
 
 # Set versions
 ENV HADOOP_VERSION=3.3.5
@@ -15,7 +15,7 @@ ENV PATH=$PATH:$HADOOP_HOME/bin:$SPARK_HOME/bin:$HIVE_HOME/bin
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
-    netcat \
+    netcat-openbsd \
     python3 \
     python3-pip \
     ssh \
