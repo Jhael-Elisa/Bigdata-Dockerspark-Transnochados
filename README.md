@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dockerized Spark, Hive, and YARN Environment
 
 This project provides a containerized environment for Apache Spark, Apache Hive, and Apache Hadoop YARN using Docker.
@@ -249,3 +250,7 @@ You can monitor your applications through:
    - Spark application details
    - Job progress
    - Stage information
+=======
+# Bigdata-Dockerspark-Transnochados
+Clúster Big Data con Apache Spark, Hadoop, Hive y YARN desplegado con Docker Compose para almacenamiento HDFS y procesamiento distribuido.
+>>>>>>> 11863254061d37cde9c1d13abfc66c3ec124c081
