@@ -2,9 +2,18 @@ networks:
   spark-network:
     driver: bridge
 
+volumes:
+  hdfs-data:
+
 services:
   yarn-resourcemanager:
-    build: .
+    # Única imagen del proyecto: se construye aquí y la reutilizan todos los servicios.
+    build:
+      context: .
+      args:
+        # "downloader" descarga Hadoop/Spark/Hive de Apache; una imagen local los reutiliza.
+        BINARIES_SOURCE: ${BINARIES_SOURCE:-downloader}
+    image: dockerspark:latest
     hostname: yarn-resourcemanager
     networks:
       - spark-network
@@ -13,8 +22,11 @@ services:
       - "8032:8032"  # ResourceManager
       - "8030:8030"  # Scheduler
       - "8031:8031"  # Resource Tracker
-      - "9000:9000"  # HDFS
+      - "9000:9000"  # HDFS (RPC, no es web)
+      - "9870:9870"  # HDFS NameNode Web UI
+      - "9864:9864"  # HDFS DataNode Web UI
     volumes:
+      - hdfs-data:/tmp/hadoop-root  # Persistencia de HDFS (NameNode + DataNode)
       - ./config/hadoop:/opt/hadoop/etc/hadoop
       - ./logs/yarn:/opt/hadoop/logs
       - ./scripts:/scripts
@@ -25,7 +37,7 @@ services:
     command: bash -c "/scripts/init-hdfs.sh && /opt/hadoop/bin/yarn resourcemanager"
 
   yarn-nodemanager:
-    build: .
+    image: dockerspark:latest
     hostname: yarn-nodemanager
     networks:
       - spark-network
@@ -42,7 +54,7 @@ services:
       - yarn-resourcemanager
 
   spark-master:
-    build: .
+    image: dockerspark:latest
     container_name: spark-master
     networks:
       - spark-network
@@ -63,12 +75,12 @@ services:
     command: ["spark-class", "org.apache.spark.deploy.master.Master"]
 
   spark-worker:
-    build: .
+    image: dockerspark:latest
     container_name: spark-worker
     networks:
       - spark-network
     ports:
-      - "8081:8081"
+      - "8081:8081"  # Spark Worker Web UI
     environment:
       - SPARK_MODE=worker
       - SPARK_MASTER_URL=spark://spark-master:7077
@@ -86,12 +98,12 @@ services:
     command: ["spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077"]
 
   hive-metastore:
-    build: .
+    image: dockerspark:latest
     container_name: hive-metastore
     networks:
       - spark-network
     ports:
-      - "9083:9083"
+      - "9083:9083"  # Hive Metastore (Thrift)
     environment:
       - SERVICE_PRECONDITION=spark-master:7077
     volumes:
@@ -100,13 +112,13 @@ services:
     command: ["hive", "--service", "metastore"]
 
   hive-server:
-    build: .
+    image: dockerspark:latest
     container_name: hive-server
     networks:
       - spark-network
     ports:
-      - "10000:10000"
-      - "10002:10002"
+      - "10000:10000"  # HiveServer2 (JDBC / Beeline)
+      - "10002:10002"  # HiveServer2 Web UI
     environment:
       - SERVICE_PRECONDITION=hive-metastore:9083
     volumes:

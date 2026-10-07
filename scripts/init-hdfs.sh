@@ -31,8 +31,10 @@ $HADOOP_HOME/bin/hdfs dfs -chmod -R 777 /spark
 $HADOOP_HOME/bin/hdfs dfs -chmod -R 777 /tmp
 $HADOOP_HOME/bin/hdfs dfs -chmod -R 777 /user
 
-# Copy Spark jars to HDFS
-$HADOOP_HOME/bin/hdfs dfs -put $SPARK_HOME/jars/* /spark/jars/
+# Copy Spark jars to HDFS (solo la primera vez: HDFS persiste en el volumen hdfs-data)
+if ! $HADOOP_HOME/bin/hdfs dfs -test -e /spark/jars/spark-core_*.jar 2>/dev/null; then
+    $HADOOP_HOME/bin/hdfs dfs -put -f $SPARK_HOME/jars/* /spark/jars/
+fi
 
 # Start YARN daemons
 $HADOOP_HOME/bin/yarn --daemon start resourcemanager
