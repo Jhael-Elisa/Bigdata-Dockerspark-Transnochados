@@ -5,7 +5,10 @@ networks:
     driver: bridge
 
 volumes:
-  hdfs-data:
+  hdfs-data:  
+  dn1-data:
+  dn2-data:
+  dn3-data:
 
 services:
   yarn-resourcemanager:
@@ -26,12 +29,13 @@ services:
       - "8031:8031"  # Resource Tracker
       - "9000:9000"  # HDFS (RPC, no es web)
       - "9870:9870"  # HDFS NameNode Web UI
-      - "9864:9864"  # HDFS DataNode Web UI
+      #- "9864:9864"  ## HDFS DataNode Web UI
     volumes:
       - hdfs-data:/tmp/hadoop-root  # Persistencia de HDFS (NameNode + DataNode)
       - ./config/hadoop:/opt/hadoop/etc/hadoop
       - ./logs/yarn:/opt/hadoop/logs
       - ./scripts:/scripts
+      - ./evidencias:/evidencias
     environment:
       - HADOOP_HOME=/opt/hadoop
       - YARN_RESOURCEMANAGER_USER=root
@@ -131,3 +135,55 @@ services:
     depends_on:
       - hive-metastore
     command: ["hive", "--service", "hiveserver2"]
+
+
+    #DATANODES AGREGADOS PARA PRUEBAS DE HDFS Y YARN
+  datanode1:
+    image: dockerspark:latest
+    container_name: datanode1Grupo2
+    hostname: datanode1
+    networks:
+      - spark-network
+    ports:
+      - "9861:9864"  # DataNode 1 Web UI
+    volumes:
+      - dn1-data:/tmp/hadoop-root
+      - ./config/hadoop:/opt/hadoop/etc/hadoop
+    command: ["hdfs", "datanode"]
+    depends_on:
+      - yarn-resourcemanager
+
+  datanode2:
+    image: dockerspark:latest
+    container_name: datanode2Grupo2
+    hostname: datanode2
+    networks:
+      - spark-network
+    ports:
+      - "9862:9864"  # DataNode 2 Web UI
+    volumes:
+      - dn2-data:/tmp/hadoop-root
+      - ./config/hadoop:/opt/hadoop/etc/hadoop
+    command: ["hdfs", "datanode"]
+    depends_on:
+      - yarn-resourcemanager
+
+  datanode3:
+    image: dockerspark:latest
+    container_name: datanode3Grupo3
+    hostname: datanode3
+    networks:
+      - spark-network
+    ports:
+      - "9863:9864"  # DataNode 3 Web UI
+    volumes:
+      - dn3-data:/tmp/hadoop-root
+      - ./config/hadoop:/opt/hadoop/etc/hadoop
+    command: ["hdfs", "datanode"]
+    depends_on:
+      - yarn-resourcemanager    
+    
+
+
+
+    

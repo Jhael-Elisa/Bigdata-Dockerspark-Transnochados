@@ -10,7 +10,7 @@ fi
 
 # Start HDFS daemons
 $HADOOP_HOME/bin/hdfs --daemon start namenode
-$HADOOP_HOME/bin/hdfs --daemon start datanode
+##$HADOOP_HOME/bin/hdfs --daemon start datanode se comenta porque ahora usaremos 3 data nodes
 
 # Wait for HDFS to be available
 echo "Waiting for HDFS to be available..."
