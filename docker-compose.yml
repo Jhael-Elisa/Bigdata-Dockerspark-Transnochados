@@ -1,5 +1,7 @@
 networks:
   spark-network:
+    # Nombre fijo sin "_": Hive 3 rechaza hostnames como "hive-metastore.dockerspark_spark-network".
+    name: spark-network
     driver: bridge
 
 volumes:
@@ -18,7 +20,7 @@ services:
     networks:
       - spark-network
     ports:
-      - "8082:8080"  # YARN ResourceManager Web UI
+      - "8082:8088"  # YARN ResourceManager Web UI (en el contenedor escucha en 8088)
       - "8032:8032"  # ResourceManager
       - "8030:8030"  # Scheduler
       - "8031:8031"  # Resource Tracker
@@ -109,6 +111,7 @@ services:
     volumes:
       - ./data:/opt/hive/data
       - ./logs/hive:/opt/hive/logs
+      - ./config/hive/hive-site.xml:/opt/hive/conf/hive-site.xml
     command: ["hive", "--service", "metastore"]
 
   hive-server:
@@ -124,6 +127,7 @@ services:
     volumes:
       - ./data:/opt/hive/data
       - ./logs/hive:/opt/hive/logs
+      - ./config/hive/hive-site.xml:/opt/hive/conf/hive-site.xml
     depends_on:
       - hive-metastore
     command: ["hive", "--service", "hiveserver2"]

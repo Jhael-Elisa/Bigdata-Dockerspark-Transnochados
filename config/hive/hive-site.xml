@@ -21,4 +21,9 @@
         <name>hive.server2.enable.doAs</name>
         <value>false</value>
     </property>
+    <property>
+        <!-- Sin esto el metastore rechaza a HiveServer2: "User root is not allowed to perform this API call" -->
+        <name>hive.metastore.event.db.notification.api.auth</name>
+        <value>false</value>
+    </property>
 </configuration>
