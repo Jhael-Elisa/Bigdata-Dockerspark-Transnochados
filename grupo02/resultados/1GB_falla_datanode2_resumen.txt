@@ -1,0 +1,9 @@
+
+RESUMEN - GRUPO 02 - dataset 1GB - falla de datanode2
+Bloques del dataset:                        8
+Bloques con réplica en datanode2 (afectados): 4
+Bloques subreplicados (máximo observado):   4
+Nuevas réplicas creadas:                    4
+Tiempo hasta detectar la caída:             90 s
+Tiempo de re-replicación (tras detectar):   26 s
+Tiempo total de recuperación:               116 s

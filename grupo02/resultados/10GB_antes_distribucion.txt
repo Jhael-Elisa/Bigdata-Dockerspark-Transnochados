@@ -1,0 +1,6 @@
+
+Distribución de las réplicas de /grupo02/dataset_10GB/dataset_grupo02_10GB:
+DATANODE     IP             ESTADO   REPLICAS_DEL_DATASET
+datanode1    172.20.0.7     ACTIVO   50
+datanode2    172.20.0.8     ACTIVO   59
+datanode3    172.20.0.9     ACTIVO   51

@@ -1,0 +1,9 @@
+
+RESUMEN - GRUPO 02 - dataset 10GB - falla de datanode3
+Bloques del dataset:                        80
+Bloques con réplica en datanode3 (afectados): 51
+Bloques subreplicados (máximo observado):   51
+Nuevas réplicas creadas:                    51
+Tiempo hasta detectar la caída:             91 s
+Tiempo de re-replicación (tras detectar):   205 s
+Tiempo total de recuperación:               296 s

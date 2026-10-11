@@ -1,0 +1,16 @@
+TIEMPO    VIVOS   MUERTOS   SUBREPLICADOS_DATASET   
++4s       3       0         0                       
++15s      3       0         0                       
++27s      3       0         0                       
++39s      3       0         0                       
++51s      3       0         0                       
++63s      3       0         0                       
++74s      3       0         0                       
++84s      3       0         0                       
++90s      2       1         0                       
+   >> El NameNode declaró MUERTO a datanode2 (+90s)
++101s     2       1         0                       
++111s     2       1         0                       
++113s     2       1         4                       
++116s     2       1         0                       
+   >> Todos los bloques del dataset vuelven a tener sus réplicas (+116s)

@@ -1,0 +1,4 @@
+MD5 original (al cargar): 4531aba60b6563905faaf534e7146250
+MD5 leído desde HDFS:     4531aba60b6563905faaf534e7146250
+Tiempo de lectura:        4 s
+RESULTADO: el archivo se leyó COMPLETO y sin corrupción
