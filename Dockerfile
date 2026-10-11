@@ -33,8 +33,10 @@ FROM ${BINARIES_SOURCE} AS binaries
 # Etapa 2: imagen final
 # Java 8 es obligatorio: Hive 3.1.x no funciona con Java 11
 # (ClassCastException AppClassLoader -> URLClassLoader al arrancar HiveServer2).
+# Se fija la variante "jammy" (Ubuntu 22.04, Python 3.10): PySpark 3.4.x solo
+# soporta hasta Python 3.11 y el tag "8-jdk" a secas ya trae Python 3.14.
 # ---------------------------------------------------------------------------
-FROM eclipse-temurin:8-jdk
+FROM eclipse-temurin:8-jdk-jammy
 
 ENV HADOOP_HOME=/opt/hadoop
 ENV SPARK_HOME=/opt/spark

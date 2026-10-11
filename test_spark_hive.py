@@ -5,7 +5,7 @@ try:
     print("Initializing Spark session with Hive support...")
     spark = SparkSession.builder \
         .appName("Spark Hive Test") \
-        .config("spark.sql.warehouse.dir", "/opt/hive/warehouse") \
+        .config("spark.sql.warehouse.dir", "hdfs://yarn-resourcemanager:9000/user/hive/warehouse") \
         .config("hive.metastore.uris", "thrift://hive-metastore:9083") \
         .enableHiveSupport() \
         .getOrCreate()

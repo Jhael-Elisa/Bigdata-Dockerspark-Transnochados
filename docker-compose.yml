@@ -170,7 +170,7 @@ services:
 
   datanode3:
     image: dockerspark:latest
-    container_name: datanode3Grupo3
+    container_name: datanode3Grupo2
     hostname: datanode3
     networks:
       - spark-network
