@@ -1,4 +1,11 @@
 #!/bin/bash
+# EXPOSICION: simula la falla de un solo DataNode y monitorea la recuperacion.
+# El NameNode detecta la falta de heartbeats y ordena reconstruir replicas.
+# -head comprueba acceso al comienzo del archivo; no verifica todo el contenido.
+# Comando que simula la falla en PowerShell: docker compose stop datanode2
+# Para restaurar al finalizar: docker compose start datanode2
+# Una nueva prueba puede dar tiempos y cantidades diferentes a las evidencias guardadas.
+
 # Paso 4: detiene un DataNode y observa cómo reacciona HDFS hasta que
 # los bloques del dataset recuperan su factor de replicación.
 # Uso: 04_fallo.sh <1GB|10GB> <numero de DataNode: 1|2|3>

@@ -1,4 +1,10 @@
 #!/bin/bash
+# EXPOSICION: lee todo el archivo y compara su MD5 con el original de la carga.
+# Si coinciden, la prueba respalda que el contenido leido se conservo.
+# Ejecutar con el DataNode aun detenido permite comprobar lectura durante la falla.
+# Comando en PowerShell: docker compose exec -T yarn-resourcemanager bash -c 'set -o pipefail; hdfs dfs -cat /grupo02/dataset_1GB/dataset_grupo02_1GB | md5sum'
+# Comparar con el MD5 original del archivo actualmente cargado.
+
 # Paso 5: lee el dataset completo desde HDFS y verifica su integridad (MD5).
 # Uso: 05_leer.sh <1GB|10GB>
 source "$(dirname "$0")/config.sh"

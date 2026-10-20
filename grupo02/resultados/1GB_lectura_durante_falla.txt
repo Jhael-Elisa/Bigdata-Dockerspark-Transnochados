@@ -2,3 +2,9 @@ MD5 original (al cargar): 4531aba60b6563905faaf534e7146250
 MD5 leído desde HDFS:     4531aba60b6563905faaf534e7146250
 Tiempo de lectura:        4 s
 RESULTADO: el archivo se leyó COMPLETO y sin corrupción
+
+# NOTAS DE EXPOSICION: verificacion historica del archivo completo con DN2 detenido.
+# Se leyo con -cat y se calculo MD5; los dos valores iguales respaldan la conservacion del contenido.
+# La lectura registrada tardo 4 segundos; no es solo una lectura de las primeras lineas.
+# Comando: docker compose exec -T yarn-resourcemanager bash -c 'set -o pipefail; hdfs dfs -cat /grupo02/dataset_1GB/dataset_grupo02_1GB | md5sum'
+# En una nueva prueba comparar con el MD5 original del dataset actualmente cargado.

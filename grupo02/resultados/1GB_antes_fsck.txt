@@ -51,3 +51,11 @@ FSCK ended at Sun Oct 11 20:23:51 UTC 2026 in 4 milliseconds
 
 
 The filesystem under path '/grupo02/dataset_1GB/dataset_grupo02_1GB' is HEALTHY
+
+# NOTAS DE EXPOSICION: abajo se conserva la salida historica del experimento.
+# Antes de la falla: 8 bloques, 2 replicas por bloque y 16 copias en total.
+# Live_repl=2 indica dos copias vivas; las direcciones muestran sus ubicaciones.
+# Ejemplo blk_1073742101: una copia en DN1 (.7) y otra en DN2 (.8).
+# Under-replicated=0, Missing=0 y Corrupt=0: sin replicas faltantes ni bloques perdidos/corruptos.
+# Comando: docker compose exec -T yarn-resourcemanager hdfs fsck /grupo02/dataset_1GB/dataset_grupo02_1GB -files -blocks -locations
+# Las IP y la distribucion pueden cambiar en una nueva ejecucion.

@@ -14,3 +14,12 @@ TIEMPO    VIVOS   MUERTOS   SUBREPLICADOS_DATASET
 +113s     2       1         4                       
 +116s     2       1         0                       
    >> Todos los bloques del dataset vuelven a tener sus réplicas (+116s)
+
+# NOTAS DE EXPOSICION: registro historico; tiempos contados desde detener DN2.
+# VIVOS/MUERTOS: nodos reportados por el NameNode; SUBREPLICADOS: bloques con menos copias que las configuradas.
+# A +90s se detecto el nodo muerto; a +113s se observaron 4 bloques subreplicados.
+# A +116s volvieron a cero: HDFS reconstruyo las replicas con DN2 todavia apagado.
+# Las metricas se consultan sucesivamente; no son una fotografia simultanea.
+# Falla: docker compose stop datanode2
+# Consulta de nodos: docker compose exec -T yarn-resourcemanager hdfs dfsadmin -report
+# Restauracion al finalizar: docker compose start datanode2

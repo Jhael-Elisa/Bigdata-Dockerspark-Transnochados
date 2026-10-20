@@ -1,4 +1,10 @@
 #!/bin/bash
+# EXPOSICION: registra el estado antes/durante/despues de la falla.
+# dfsadmin -report muestra nodos vivos y muertos; fsck muestra bloques y replicas.
+# tee permite mostrar y guardar las salidas como evidencia.
+# Comando en PowerShell: docker compose exec -T yarn-resourcemanager hdfs dfsadmin -report
+# Comando de bloques: docker compose exec -T yarn-resourcemanager hdfs fsck /grupo02/dataset_1GB/dataset_grupo02_1GB -files -blocks -locations
+
 # Paso 3: registra el estado de los DataNodes y de los bloques del dataset.
 # Uso: 03_estado.sh <1GB|10GB> <antes|durante|despues>
 source "$(dirname "$0")/config.sh"
