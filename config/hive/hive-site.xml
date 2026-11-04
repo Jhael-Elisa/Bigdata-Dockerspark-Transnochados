@@ -23,6 +23,14 @@
         <value>false</value>
     </property>
     <property>
+        <name>hive.execution.engine</name>
+        <value>mr</value>
+    </property>
+    <property>
+        <name>hive.exec.mode.local.auto</name>
+        <value>false</value>
+    </property>
+    <property>
         <!-- Sin esto el metastore rechaza a HiveServer2: "User root is not allowed to perform this API call" -->
         <name>hive.metastore.event.db.notification.api.auth</name>
         <value>false</value>

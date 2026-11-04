@@ -131,6 +131,7 @@ services:
     volumes:
       - ./data:/opt/hive/data
       - ./logs/hive:/opt/hive/logs
+      - ./config/hadoop:/opt/hadoop/etc/hadoop
       - ./config/hive/hive-site.xml:/opt/hive/conf/hive-site.xml
     depends_on:
       - hive-metastore
