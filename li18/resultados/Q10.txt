@@ -1,0 +1,10 @@
+LI18 | Johnny Suarez Abasto | ¿Cuál es el ticket promedio por factura?
+Fecha y hora del sistema: 2026-10-27T20:07:36-04:00
+SQL EJECUTADO
+ SELECT ROUND(AVG(total_factura), 2) AS ticket_promedio FROM ( SELECT InvoiceNo, SUM(Quantity * UnitPrice) AS
+total_factura FROM db3_john.data3_john WHERE Quantity > 0 AND UnitPrice > 0 GROUP BY InvoiceNo ) t;
+RESULTADO REAL DE HIVE
+ticket_promedio
+534.40
+
+Estado: consulta finalizada sin errores.

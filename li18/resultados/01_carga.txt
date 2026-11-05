@@ -1,0 +1,9 @@
+LI18 | Johnny Suarez Abasto | Carga del CSV en HDFS y Hive
+Fecha y hora del sistema: 2026-10-27T20:06:45-04:00
+SQL EJECUTADO
+LOAD DATA INPATH 'hdfs://yarn-resourcemanager:9000/user/hive/warehouse/li18_john/data3_john.csv' INTO TABLE
+db3_john.data3_john_csv;
+RESULTADO REAL DE HIVE
+Carga completada.
+
+Estado: consulta finalizada sin errores.

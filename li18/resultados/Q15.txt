@@ -1,0 +1,22 @@
+LI18 | Johnny Suarez Abasto | ¿Cuántas ventas se realizaron por mes?
+Fecha y hora del sistema: 2026-10-27T20:07:57-04:00
+SQL EJECUTADO
+ SELECT month(from_unixtime(unix_timestamp(InvoiceDate, 'M/d/yyyy H:mm'))) AS mes, COUNT(DISTINCT InvoiceNo)
+AS total_facturas FROM db3_john.data3_john WHERE Quantity > 0 AND UnitPrice > 0 GROUP BY
+month(from_unixtime(unix_timestamp(InvoiceDate, 'M/d/yyyy H:mm'))) ORDER BY mes;
+RESULTADO REAL DE HIVE
+mes	total_facturas
+1	1086
+2	1100
+3	1454
+4	1246
+5	1681
+6	1533
+7	1475
+8	1361
+9	1837
+10	2040
+11	2769
+12	2378
+
+Estado: consulta finalizada sin errores.

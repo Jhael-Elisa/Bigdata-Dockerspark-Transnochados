@@ -1,0 +1,20 @@
+LI18 | Johnny Suarez Abasto | ¿Cuáles son los clientes que más compraron en valor monetario?
+Fecha y hora del sistema: 2026-10-27T20:07:32-04:00
+SQL EJECUTADO
+ SELECT CustomerID, ROUND(SUM(Quantity * UnitPrice), 2) AS total_comprado FROM db3_john.data3_john WHERE
+Quantity > 0 AND UnitPrice > 0 AND CustomerID IS NOT NULL AND CustomerID <> '' GROUP BY CustomerID ORDER BY
+total_comprado DESC LIMIT 10;
+RESULTADO REAL DE HIVE
+customerid	total_comprado
+14646	280206.02
+18102	259657.30
+17450	194550.79
+16446	168472.50
+14911	143825.06
+12415	124914.53
+14156	117379.63
+17511	91062.38
+16029	81024.84
+12346	77183.60
+
+Estado: consulta finalizada sin errores.

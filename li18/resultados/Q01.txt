@@ -1,0 +1,9 @@
+LI18 | Johnny Suarez Abasto | ¿Cuántos registros existen en el dataset?
+Fecha y hora del sistema: 2026-10-27T20:07:02-04:00
+SQL EJECUTADO
+SELECT COUNT(*) AS total_registros FROM db3_john.data3_john;
+RESULTADO REAL DE HIVE
+total_registros
+541909
+
+Estado: consulta finalizada sin errores.

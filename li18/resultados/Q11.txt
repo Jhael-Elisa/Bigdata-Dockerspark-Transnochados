@@ -1,0 +1,19 @@
+LI18 | Johnny Suarez Abasto | ¿Cuáles son las facturas con mayor monto total?
+Fecha y hora del sistema: 2026-10-27T20:07:40-04:00
+SQL EJECUTADO
+ SELECT InvoiceNo, ROUND(SUM(Quantity * UnitPrice), 2) AS total_factura FROM db3_john.data3_john WHERE
+Quantity > 0 AND UnitPrice > 0 GROUP BY InvoiceNo ORDER BY total_factura DESC LIMIT 10;
+RESULTADO REAL DE HIVE
+invoiceno	total_factura
+581483	168469.60
+541431	77183.60
+574941	52940.94
+576365	50653.91
+556444	38970.00
+567423	31698.16
+556917	22775.93
+572209	22206.00
+567381	22104.80
+563614	21880.44
+
+Estado: consulta finalizada sin errores.

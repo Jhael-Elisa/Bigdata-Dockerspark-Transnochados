@@ -1,0 +1,20 @@
+LI18 | Johnny Suarez Abasto | ¿Qué clientes realizaron más devoluciones?
+Fecha y hora del sistema: 2026-10-27T20:08:34-04:00
+SQL EJECUTADO
+ SELECT CustomerID, COUNT(*) AS total_registros_devolucion, ROUND(SUM(ABS(Quantity * UnitPrice)), 2) AS
+valor_devoluciones FROM db3_john.data3_john WHERE (Quantity < 0 OR InvoiceNo LIKE 'C%') AND CustomerID IS NOT
+NULL AND CustomerID <> '' GROUP BY CustomerID ORDER BY valor_devoluciones DESC LIMIT 10;
+RESULTADO REAL DE HIVE
+customerid	total_registros_devolucion	valor_devoluciones
+16446	1	168469.60
+12346	1	77183.60
+15098	2	39267.00
+16029	32	30032.23
+15749	5	22998.40
+12744	7	12158.90
+14911	226	11252.44
+12931	20	8593.15
+12536	12	8495.01
+14096	17	8043.88
+
+Estado: consulta finalizada sin errores.

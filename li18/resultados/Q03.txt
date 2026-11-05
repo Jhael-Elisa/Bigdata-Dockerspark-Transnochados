@@ -1,0 +1,10 @@
+LI18 | Johnny Suarez Abasto | ¿Cuántos clientes únicos realizaron compras?
+Fecha y hora del sistema: 2026-10-27T20:07:08-04:00
+SQL EJECUTADO
+ SELECT COUNT(DISTINCT CustomerID) AS total_clientes FROM db3_john.data3_john WHERE CustomerID IS NOT NULL AND
+CustomerID <> '';
+RESULTADO REAL DE HIVE
+total_clientes
+4372
+
+Estado: consulta finalizada sin errores.

@@ -1,0 +1,13 @@
+LI18 | Johnny Suarez Abasto | 04_location
+Fecha y hora del sistema: 2026-10-27T20:06:58-04:00
+SQL EJECUTADO
+DESCRIBE FORMATTED db3_john.data3_john;
+RESULTADO REAL DE HIVE (propiedades de ubicacion y almacenamiento)
+Database:           	db3_john            	NULL
+Location:           	hdfs://yarn-resourcemanager:9000/user/hive/warehouse/db3_john.db/data3_john	NULL
+Table Type:         	MANAGED_TABLE       	NULL
+SerDe Library:      	org.apache.hadoop.hive.ql.io.orc.OrcSerde	NULL
+InputFormat:        	org.apache.hadoop.hive.ql.io.orc.OrcInputFormat	NULL
+OutputFormat:       	org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat	NULL
+
+Salida completa: 04_location.tsv

@@ -1,0 +1,17 @@
+LI18 | Johnny Suarez Abasto | Base de datos y tabla CSV
+Fecha y hora del sistema: 2026-10-27T20:06:43-04:00
+SQL EJECUTADO
+CREATE DATABASE IF NOT EXISTS db3_john;
+CREATE TABLE IF NOT EXISTS db3_john.data3_john_csv (
+InvoiceNo
+STRING,StockCode STRING,Description STRING,Quantity STRING,
+InvoiceDate STRING,UnitPrice STRING,CustomerID
+STRING,Country STRING)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES
+('separatorChar'=',','quoteChar'='"','escapeChar'='\\')
+STORED AS TEXTFILE;
+RESULTADO REAL DE HIVE
+
+
+Estado: consulta finalizada sin errores.

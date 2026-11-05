@@ -1,0 +1,9 @@
+LI18 | Johnny Suarez Abasto | ¿Cuántas devoluciones o cancelaciones existen?
+Fecha y hora del sistema: 2026-10-27T20:08:23-04:00
+SQL EJECUTADO
+ SELECT COUNT(*) AS total_devoluciones FROM db3_john.data3_john WHERE Quantity < 0 OR InvoiceNo LIKE 'C%';
+RESULTADO REAL DE HIVE
+total_devoluciones
+10624
+
+Estado: consulta finalizada sin errores.

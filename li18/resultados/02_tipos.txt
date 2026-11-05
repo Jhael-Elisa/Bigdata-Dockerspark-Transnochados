@@ -1,0 +1,14 @@
+LI18 | Johnny Suarez Abasto | Esquema tipado de analisis
+Fecha y hora del sistema: 2026-10-27T20:06:54-04:00
+SQL EJECUTADO
+CREATE TABLE db3_john.data3_john STORED AS ORC AS
+SELECT InvoiceNo, StockCode, Description, CAST(Quantity AS
+INT) AS Quantity,
+InvoiceDate, CAST(UnitPrice AS DECIMAL(18,4)) AS UnitPrice,
+CASE WHEN TRIM(CustomerID)=''
+THEN NULL ELSE TRIM(CustomerID) END AS CustomerID,
+Country FROM db3_john.data3_john_csv;
+RESULTADO REAL DE HIVE
+Tabla ORC creada.
+
+Estado: consulta finalizada sin errores.

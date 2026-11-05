@@ -1,0 +1,33 @@
+LI18 | Johnny Suarez Abasto | ¿Qué países tienen mayor cantidad de clientes únicos?
+Fecha y hora del sistema: 2026-10-27T20:09:12-04:00
+SQL EJECUTADO
+ SELECT Country, COUNT(DISTINCT CustomerID) AS clientes_unicos FROM db3_john.data3_john WHERE CustomerID IS
+NOT NULL AND CustomerID <> '' GROUP BY Country ORDER BY clientes_unicos DESC;
+RESULTADO REAL DE HIVE
+country	clientes_unicos
+United Kingdom	3950
+Germany	95
+France	87
+Spain	31
+Belgium	25
+Switzerland	21
+Portugal	19
+Italy	15
+Finland	12
+Austria	11
+Norway	10
+Australia	9
+Netherlands	9
+Denmark	9
+Channel Islands	9
+Japan	8
+Cyprus	8
+Sweden	8
+Poland	6
+USA	4
+Israel	4
+Canada	4
+
+Vista inicial: 22 de 37 filas. Salida completa: Q32.tsv
+
+Estado: consulta finalizada sin errores.

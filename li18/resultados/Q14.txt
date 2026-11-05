@@ -1,0 +1,19 @@
+LI18 | Johnny Suarez Abasto | ¿Cuáles son los productos con precio unitario promedio más alto?
+Fecha y hora del sistema: 2026-10-27T20:07:52-04:00
+SQL EJECUTADO
+ SELECT StockCode, Description, ROUND(AVG(UnitPrice), 2) AS precio_promedio FROM db3_john.data3_john WHERE
+UnitPrice > 0 GROUP BY StockCode, Description ORDER BY precio_promedio DESC LIMIT 10;
+RESULTADO REAL DE HIVE
+stockcode	description	precio_promedio
+B	Adjust bad debt	11062.06
+AMAZONFEE	AMAZON FEE	7324.78
+22502	PICNIC BASKET WICKER 60 PIECES	649.50
+CRUK	CRUK Commission	495.84
+M	Manual	379.55
+DOT	DOTCOM POSTAGE	291.73
+BANK CHARGES	Bank Charges	202.86
+22828	REGENCY MIRROR WITH SHUTTERS	156.43
+22827	RUSTIC  SEVENTEEN DRAWER SIDEBOARD	156.03
+22655	VINTAGE RED KITCHEN CABINET	150.66
+
+Estado: consulta finalizada sin errores.

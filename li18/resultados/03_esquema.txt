@@ -1,0 +1,16 @@
+LI18 | Johnny Suarez Abasto | 03_esquema
+Fecha y hora del sistema: 2026-10-27T20:06:56-04:00
+SQL EJECUTADO
+DESCRIBE db3_john.data3_john;
+RESULTADO REAL DE HIVE
+col_name	data_type	comment
+invoiceno	string	
+stockcode	string	
+description	string	
+quantity	int	
+invoicedate	string	
+unitprice	decimal(18,4)	
+customerid	string	
+country	string
+
+Estado: consulta finalizada sin errores.

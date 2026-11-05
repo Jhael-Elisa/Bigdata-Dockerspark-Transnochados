@@ -1,0 +1,22 @@
+LI18 | Johnny Suarez Abasto | ¿Cuál es el ingreso total por mes?
+Fecha y hora del sistema: 2026-10-27T20:08:02-04:00
+SQL EJECUTADO
+ SELECT month(from_unixtime(unix_timestamp(InvoiceDate, 'M/d/yyyy H:mm'))) AS mes, ROUND(SUM(Quantity *
+UnitPrice), 2) AS ingreso_mensual FROM db3_john.data3_john WHERE Quantity > 0 AND UnitPrice > 0 GROUP BY
+month(from_unixtime(unix_timestamp(InvoiceDate, 'M/d/yyyy H:mm'))) ORDER BY mes;
+RESULTADO REAL DE HIVE
+mes	ingreso_mensual
+1	691364.56
+2	523631.89
+3	717639.36
+4	537808.62
+5	770536.02
+6	761739.90
+7	719221.19
+8	759138.38
+9	1058590.17
+10	1154979.30
+11	1509496.33
+12	1462538.82
+
+Estado: consulta finalizada sin errores.

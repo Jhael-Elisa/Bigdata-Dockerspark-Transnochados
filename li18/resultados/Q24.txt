@@ -1,0 +1,19 @@
+LI18 | Johnny Suarez Abasto | ¿Cuál es el país con mayor valor de devoluciones?
+Fecha y hora del sistema: 2026-10-27T20:08:38-04:00
+SQL EJECUTADO
+ SELECT Country, ROUND(SUM(ABS(Quantity * UnitPrice)), 2) AS valor_devoluciones FROM db3_john.data3_john WHERE
+Quantity < 0 OR InvoiceNo LIKE 'C%' GROUP BY Country ORDER BY valor_devoluciones DESC LIMIT 10;
+RESULTADO REAL DE HIVE
+country	valor_devoluciones
+United Kingdom	815291.60
+EIRE	20177.14
+France	12311.21
+Singapore	12158.90
+Germany	7168.93
+Spain	6802.53
+Hong Kong	5574.76
+Portugal	4380.08
+Japan	2075.75
+USA	1849.47
+
+Estado: consulta finalizada sin errores.

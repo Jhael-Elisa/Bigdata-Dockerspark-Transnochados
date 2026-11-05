@@ -1,0 +1,9 @@
+col_name	data_type	comment
+invoiceno	string	
+stockcode	string	
+description	string	
+quantity	int	
+invoicedate	string	
+unitprice	decimal(18,4)	
+customerid	string	
+country	string

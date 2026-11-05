@@ -1,0 +1,18 @@
+{
+  "archivo_excel": "Online Retail.xlsx",
+  "fuente": "https://archive.ics.uci.edu/static/public/352/online+retail.zip",
+  "columnas": [
+    "InvoiceNo",
+    "StockCode",
+    "Description",
+    "Quantity",
+    "InvoiceDate",
+    "UnitPrice",
+    "CustomerID",
+    "Country"
+  ],
+  "registros": 541909,
+  "clientes_sin_id": 135080,
+  "campos_con_salto_normalizado": 0,
+  "sha256_excel": "43465a06f2ccf7c8b5bd2892bc7defb52f97487934fe93b16ae4c3936424676d"
+}

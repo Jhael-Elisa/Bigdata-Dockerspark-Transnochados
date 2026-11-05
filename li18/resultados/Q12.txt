@@ -1,0 +1,11 @@
+LI18 | Johnny Suarez Abasto | ¿Cuál es la cantidad promedio de productos por factura?
+Fecha y hora del sistema: 2026-10-27T20:07:44-04:00
+SQL EJECUTADO
+ SELECT ROUND(AVG(total_productos), 2) AS promedio_productos_por_factura FROM ( SELECT InvoiceNo,
+SUM(Quantity) AS total_productos FROM db3_john.data3_john WHERE Quantity > 0 AND UnitPrice > 0 GROUP BY
+InvoiceNo ) t;
+RESULTADO REAL DE HIVE
+promedio_productos_por_factura
+279.98
+
+Estado: consulta finalizada sin errores.

@@ -1,0 +1,20 @@
+LI18 | Johnny Suarez Abasto | ¿Qué día tuvo mayores ventas?
+Fecha y hora del sistema: 2026-10-27T20:08:14-04:00
+SQL EJECUTADO
+ SELECT to_date(from_unixtime(unix_timestamp(InvoiceDate, 'M/d/yyyy H:mm'))) AS fecha, ROUND(SUM(Quantity *
+UnitPrice), 2) AS ventas_dia FROM db3_john.data3_john WHERE Quantity > 0 AND UnitPrice > 0 GROUP BY
+to_date(from_unixtime(unix_timestamp(InvoiceDate, 'M/d/yyyy H:mm'))) ORDER BY ventas_dia DESC LIMIT 10;
+RESULTADO REAL DE HIVE
+fecha	ventas_dia
+2011-12-09	200920.60
+2011-11-14	114419.89
+2011-09-20	109612.03
+2010-12-07	99618.20
+2011-01-18	95978.05
+2011-12-05	88741.96
+2011-11-07	85881.81
+2011-12-08	82495.00
+2011-11-23	80104.18
+2011-09-15	78218.95
+
+Estado: consulta finalizada sin errores.

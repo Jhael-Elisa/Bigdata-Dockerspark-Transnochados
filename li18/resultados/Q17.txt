@@ -1,0 +1,25 @@
+LI18 | Johnny Suarez Abasto | ¿Cuál es el ingreso total por año y mes?
+Fecha y hora del sistema: 2026-10-27T20:08:08-04:00
+SQL EJECUTADO
+ SELECT year(from_unixtime(unix_timestamp(InvoiceDate, 'M/d/yyyy H:mm'))) AS anio,
+month(from_unixtime(unix_timestamp(InvoiceDate, 'M/d/yyyy H:mm'))) AS mes, ROUND(SUM(Quantity * UnitPrice), 2)
+AS ingreso_total FROM db3_john.data3_john WHERE Quantity > 0 AND UnitPrice > 0 GROUP BY
+year(from_unixtime(unix_timestamp(InvoiceDate, 'M/d/yyyy H:mm'))),
+month(from_unixtime(unix_timestamp(InvoiceDate, 'M/d/yyyy H:mm'))) ORDER BY anio, mes;
+RESULTADO REAL DE HIVE
+anio	mes	ingreso_total
+2010	12	823746.14
+2011	1	691364.56
+2011	2	523631.89
+2011	3	717639.36
+2011	4	537808.62
+2011	5	770536.02
+2011	6	761739.90
+2011	7	719221.19
+2011	8	759138.38
+2011	9	1058590.17
+2011	10	1154979.30
+2011	11	1509496.33
+2011	12	638792.68
+
+Estado: consulta finalizada sin errores.

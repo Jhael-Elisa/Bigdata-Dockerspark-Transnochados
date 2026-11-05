@@ -1,0 +1,11 @@
+LI18 | Johnny Suarez Abasto | ¿Cuál es el gasto promedio por cliente?
+Fecha y hora del sistema: 2026-10-27T20:08:51-04:00
+SQL EJECUTADO
+ SELECT ROUND(AVG(total_cliente), 2) AS gasto_promedio_cliente FROM ( SELECT CustomerID, SUM(Quantity *
+UnitPrice) AS total_cliente FROM db3_john.data3_john WHERE Quantity > 0 AND UnitPrice > 0 AND CustomerID IS
+NOT NULL AND CustomerID <> '' GROUP BY CustomerID ) t;
+RESULTADO REAL DE HIVE
+gasto_promedio_cliente
+2054.27
+
+Estado: consulta finalizada sin errores.

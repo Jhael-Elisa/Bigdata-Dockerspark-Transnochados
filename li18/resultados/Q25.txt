@@ -1,0 +1,33 @@
+LI18 | Johnny Suarez Abasto | ¿Cuál es el ingreso neto por país, considerando ventas y devoluciones?
+Fecha y hora del sistema: 2026-10-27T20:08:42-04:00
+SQL EJECUTADO
+ SELECT Country, ROUND(SUM(Quantity * UnitPrice), 2) AS ingreso_neto FROM db3_john.data3_john WHERE UnitPrice
+> 0 GROUP BY Country ORDER BY ingreso_neto DESC;
+RESULTADO REAL DE HIVE
+country	ingreso_neto
+United Kingdom	8209930.48
+Netherlands	284661.54
+EIRE	263276.82
+Germany	221698.21
+France	197403.90
+Australia	137077.27
+Switzerland	56385.35
+Spain	54774.58
+Belgium	40910.96
+Sweden	36595.91
+Japan	35340.62
+Norway	35163.46
+Portugal	29367.02
+Finland	22326.74
+Channel Islands	20086.29
+Denmark	18768.14
+Italy	16890.51
+Cyprus	12946.29
+Austria	10154.32
+Hong Kong	10117.04
+Singapore	9120.39
+Israel	7907.82
+
+Vista inicial: 22 de 38 filas. Salida completa: Q25.tsv
+
+Estado: consulta finalizada sin errores.

@@ -1,0 +1,19 @@
+LI18 | Johnny Suarez Abasto | ¿Qué productos tienen más devoluciones?
+Fecha y hora del sistema: 2026-10-27T20:08:30-04:00
+SQL EJECUTADO
+ SELECT StockCode, Description, SUM(ABS(Quantity)) AS cantidad_devuelta FROM db3_john.data3_john WHERE
+Quantity < 0 OR InvoiceNo LIKE 'C%' GROUP BY StockCode, Description ORDER BY cantidad_devuelta DESC LIMIT 10;
+RESULTADO REAL DE HIVE
+stockcode	description	cantidad_devuelta
+23843	PAPER CRAFT , LITTLE BIRDIE	80995
+23166	MEDIUM CERAMIC TOP STORAGE JAR	74494
+23005	printing smudges/thrown away	19200
+84347	ROTATING SILVER ANGELS T-LIGHT HLDR	9376
+23003	Printing smudges/thrown away	9058
+72140F	throw away	5368
+79323W	Unsaleable, destroyed.	4830
+M	Manual	4066
+16045		3667
+16259		3167
+
+Estado: consulta finalizada sin errores.

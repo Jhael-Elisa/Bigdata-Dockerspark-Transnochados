@@ -1,0 +1,19 @@
+LI18 | Johnny Suarez Abasto | ¿Cuáles son los 10 países con mayor cantidad de facturas?
+Fecha y hora del sistema: 2026-10-27T20:07:19-04:00
+SQL EJECUTADO
+ SELECT Country, COUNT(DISTINCT InvoiceNo) AS total_facturas FROM db3_john.data3_john WHERE Quantity > 0 AND
+UnitPrice > 0 GROUP BY Country ORDER BY total_facturas DESC LIMIT 10;
+RESULTADO REAL DE HIVE
+country	total_facturas
+United Kingdom	18019
+Germany	457
+France	392
+EIRE	288
+Belgium	98
+Netherlands	94
+Spain	90
+Portugal	58
+Australia	57
+Switzerland	54
+
+Estado: consulta finalizada sin errores.

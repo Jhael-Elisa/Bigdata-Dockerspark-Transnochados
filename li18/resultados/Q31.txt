@@ -1,0 +1,34 @@
+LI18 | Johnny Suarez Abasto | ¿Cuál es el ranking de clientes por país según monto comprado?
+Fecha y hora del sistema: 2026-10-27T20:09:08-04:00
+SQL EJECUTADO
+ SELECT Country, CustomerID, ROUND(SUM(Quantity * UnitPrice), 2) AS monto_total FROM db3_john.data3_john WHERE
+Quantity > 0 AND UnitPrice > 0 AND CustomerID IS NOT NULL AND CustomerID <> '' GROUP BY Country, CustomerID
+ORDER BY Country, monto_total DESC;
+RESULTADO REAL DE HIVE
+country	customerid	monto_total
+Australia	12415	124914.53
+Australia	12431	5514.67
+Australia	12388	2780.66
+Australia	12424	1760.96
+Australia	12393	1582.60
+Australia	12434	806.14
+Australia	12386	401.90
+Australia	12422	386.20
+Australia	16321	373.65
+Austria	12360	2662.06
+Austria	12865	1568.23
+Austria	12818	1542.08
+Austria	12358	1168.06
+Austria	12374	742.93
+Austria	12453	707.09
+Austria	12414	562.41
+Austria	12429	437.98
+Austria	12373	364.60
+Austria	12370	277.20
+Austria	12817	166.04
+Bahrain	12355	459.40
+Bahrain	12353	89.00
+
+Vista inicial: 22 de 4346 filas. Salida completa: Q31.tsv
+
+Estado: consulta finalizada sin errores.

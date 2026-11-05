@@ -1,0 +1,9 @@
+LI18 | Johnny Suarez Abasto | ¿Cuántas facturas únicas existen?
+Fecha y hora del sistema: 2026-10-27T20:07:05-04:00
+SQL EJECUTADO
+ SELECT COUNT(DISTINCT InvoiceNo) AS total_facturas FROM db3_john.data3_john;
+RESULTADO REAL DE HIVE
+total_facturas
+25900
+
+Estado: consulta finalizada sin errores.

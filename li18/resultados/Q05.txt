@@ -1,0 +1,33 @@
+LI18 | Johnny Suarez Abasto | ¿Cuál es el total de ventas por país?
+Fecha y hora del sistema: 2026-10-27T20:07:15-04:00
+SQL EJECUTADO
+ SELECT Country, ROUND(SUM(Quantity * UnitPrice), 2) AS ventas_totales FROM db3_john.data3_john WHERE Quantity
+> 0 AND UnitPrice > 0 GROUP BY Country ORDER BY ventas_totales DESC;
+RESULTADO REAL DE HIVE
+country	ventas_totales
+United Kingdom	9025222.08
+Netherlands	285446.34
+EIRE	283453.96
+Germany	228867.14
+France	209715.11
+Australia	138521.31
+Spain	61577.11
+Switzerland	57089.90
+Belgium	41196.34
+Sweden	38378.33
+Japan	37416.37
+Norway	36165.44
+Portugal	33747.10
+Finland	22546.08
+Singapore	21279.29
+Channel Islands	20450.44
+Denmark	18955.34
+Italy	17483.24
+Hong Kong	15691.80
+Cyprus	13590.38
+Austria	10198.68
+Israel	8135.26
+
+Vista inicial: 22 de 38 filas. Salida completa: Q05.tsv
+
+Estado: consulta finalizada sin errores.

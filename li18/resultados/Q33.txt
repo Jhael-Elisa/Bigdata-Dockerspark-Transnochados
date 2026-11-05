@@ -1,0 +1,13 @@
+LI18 | Johnny Suarez Abasto | ¿Cuál es el promedio de unidades vendidas por producto?
+Fecha y hora del sistema: 2026-10-27T20:09:16-04:00
+Motor: Apache Hive 3.1.3 / Beeline / MapReduce local
+
+SQL EJECUTADO
+ SELECT ROUND(AVG(cantidad_total), 2) AS promedio_unidades_por_producto FROM ( SELECT StockCode, SUM(Quantity)
+AS cantidad_total FROM db3_john.data3_john WHERE Quantity > 0 AND UnitPrice > 0 GROUP BY StockCode ) t;
+
+RESULTADO REAL DE HIVE
+promedio_unidades_por_producto
+1424.88
+
+Estado: consulta finalizada sin errores.

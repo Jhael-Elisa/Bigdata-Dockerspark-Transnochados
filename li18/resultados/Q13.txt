@@ -1,0 +1,19 @@
+LI18 | Johnny Suarez Abasto | ¿Cuáles son los productos con precio unitario más alto?
+Fecha y hora del sistema: 2026-10-27T20:07:48-04:00
+SQL EJECUTADO
+ SELECT StockCode, Description, MAX(UnitPrice) AS precio_maximo FROM db3_john.data3_john WHERE UnitPrice > 0
+GROUP BY StockCode, Description ORDER BY precio_maximo DESC LIMIT 10;
+RESULTADO REAL DE HIVE
+stockcode	description	precio_maximo
+M	Manual	38970.0000
+AMAZONFEE	AMAZON FEE	17836.4600
+B	Adjust bad debt	11062.0600
+POST	POSTAGE	8142.7500
+DOT	DOTCOM POSTAGE	4505.1700
+D	Discount	1867.8600
+CRUK	CRUK Commission	1100.4400
+BANK CHARGES	Bank Charges	1050.1500
+22502	PICNIC BASKET WICKER 60 PIECES	649.5000
+S	SAMPLES	570.0000
+
+Estado: consulta finalizada sin errores.
